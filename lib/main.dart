@@ -1,5 +1,8 @@
+import 'package:emaar/features/on_boarding/views/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'core/utils/app_theme/app_theme.dart';
 
 void main() {
   runApp(const EmaarApp());
@@ -12,7 +15,6 @@ class EmaarApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Emaar App',
-      theme: ThemeData(primarySwatch: Colors.blue),
       // for Localization
       locale: const Locale('ar'),
       supportedLocales: const [
@@ -23,10 +25,9 @@ class EmaarApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Emaar App')),
-        body: const Center(child: Text('Welcome to Emaar App!')),
-      ),
+      // for themes
+      theme: AppTheme.lightTheme,
+      home: OnBoardingView(),
     );
   }
 }
