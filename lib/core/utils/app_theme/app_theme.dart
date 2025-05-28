@@ -14,7 +14,10 @@ class AppTheme {
       fontFamily: AppFonts.balooBhaijaan2,
       primaryColor: AppColors.primary,
       scaffoldBackgroundColor: AppColors.primaryBackgrond,
-      textTheme: TextTheme(headlineLarge: AppTextStyles.heading26),
+      textTheme: TextTheme(
+        headlineLarge: AppTextStyles.heading26,
+        headlineMedium: AppTextStyles.heading24,
+      ),
     );
   }
 

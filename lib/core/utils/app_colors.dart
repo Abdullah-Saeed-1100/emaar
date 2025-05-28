@@ -5,7 +5,7 @@ class AppColors {
 
   // primary light
   static const primary = Color(0xFFFF6D17);
-  static const primary10 = Color(0xFFFFB88A);
+  static const primary10 = Color.fromARGB(255, 247, 218, 198);
   static const primaryBackgrond = Color(0xFFF2F2F2);
   // static const primaryBackgrondAppBar = Color(0xFFEFEFEF);
   // static const primaryCard = Colors.white;
