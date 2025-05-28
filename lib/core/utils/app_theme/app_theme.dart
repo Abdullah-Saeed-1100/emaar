@@ -13,7 +13,7 @@ class AppTheme {
       useMaterial3: true,
       fontFamily: AppFonts.balooBhaijaan2,
       primaryColor: AppColors.primary,
-      scaffoldBackgroundColor: AppColors.primaryBackgrond,
+      scaffoldBackgroundColor: AppColors.primaryBackground,
       textTheme: TextTheme(
         bodyLarge: AppTextStyles.body18,
         headlineLarge: AppTextStyles.heading26,

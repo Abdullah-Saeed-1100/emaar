@@ -1,3 +1,5 @@
+import 'package:emaar/core/utils/app_colors.dart';
+import 'package:emaar/core/utils/app_text_styles.dart';
 import 'package:emaar/features/estate/data/models/property_test_model.dart';
 import 'package:emaar/features/estate/widgets/property_detail_for_item_grid_view_home.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +13,11 @@ class CustomItemGridViewHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 16),
+      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
+
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -26,75 +30,79 @@ class CustomItemGridViewHome extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // الصورة
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
-                child: Container(
-                  height: 200,
-                  width: double.infinity,
+          AspectRatio(
+            aspectRatio: 2 / 1, // نسبة العرض إلى الارتفاع
+            child: Stack(
+              children: [
+                Container(
+                  // height: 200,
+                  // width: double.infinity,
+                  clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
+                    // borderRadius: BorderRadius.only(
+                    //   bottomLeft: Radius.circular(8),
+                    //   bottomRight: Radius.circular(8),
+                    // ),
                     image: DecorationImage(
                       image: NetworkImage(property.imageUrl),
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-              ),
-              // نوع العقار
-              Positioned(
-                top: 12,
-                right: 12,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color:
-                        property.type == PropertyType.sale
-                            ? Colors.green
-                            : Colors.orange,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    property.type == PropertyType.sale ? 'للبيع' : 'للإيجار',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              // أيقونة المفضلة
-              Positioned(
-                top: 12,
-                left: 12,
-                child: GestureDetector(
-                  onTap: () {
-                    // setState(() {
-                    //   if (isFavorite) {
-                    //     _favorites.remove(property.id);
-                    //   } else {
-                    //     _favorites.add(property.id);
-                    //   }
-                    // });
-                  },
+                // نوع العقار
+                Positioned(
+                  top: 12,
+                  right: 12,
                   child: Container(
-                    padding: EdgeInsets.all(8),
+                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.9),
-                      borderRadius: BorderRadius.circular(20),
+                      color:
+                          property.type == PropertyType.sale
+                              ? Colors.green
+                              : AppColors.primary,
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Icon(
-                      // isFavorite ? Icons.favorite : Icons.favorite_border,
-                      // color: isFavorite ? Colors.red : Colors.grey[600],
-                      Icons.favorite_border,
-                      color: Colors.grey[600],
-                      size: 20,
+                    child: Text(
+                      property.type == PropertyType.sale ? 'للبيع' : 'للإيجار',
+                      style: AppTextStyles.body12.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                // أيقونة المفضلة
+                Positioned(
+                  top: 6,
+                  left: 6,
+                  child: GestureDetector(
+                    onTap: () {
+                      // setState(() {
+                      //   if (isFavorite) {
+                      //     _favorites.remove(property.id);
+                      //   } else {
+                      //     _favorites.add(property.id);
+                      //   }
+                      // });
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Icon(
+                        // isFavorite ? Icons.favorite : Icons.favorite_border,
+                        // color: isFavorite ? Colors.red : Colors.grey[600],
+                        Icons.favorite_border,
+                        // color: AppColors.primary,
+                        color: Colors.grey[600],
+                        size: 22,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           // المعلومات
           Padding(
@@ -104,11 +112,12 @@ class CustomItemGridViewHome extends StatelessWidget {
               children: [
                 Text(
                   property.title,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey[800],
-                  ),
+                  style: AppTextStyles.body16.copyWith(color: Colors.black),
+                  // style: TextStyle(
+                  //   fontSize: 16,
+                  //   fontWeight: FontWeight.bold,
+                  //   color: Colors.grey[800],
+                  // ),
                 ),
                 SizedBox(height: 8),
                 Row(
@@ -118,7 +127,7 @@ class CustomItemGridViewHome extends StatelessWidget {
                     Expanded(
                       child: Text(
                         property.location,
-                        style: TextStyle(color: Colors.grey[600], fontSize: 13),
+                        style: TextStyle(color: Colors.grey[800], fontSize: 13),
                       ),
                     ),
                   ],
@@ -147,11 +156,16 @@ class CustomItemGridViewHome extends StatelessWidget {
                 // السعر
                 Text(
                   property.price,
-                  style: TextStyle(
-                    fontSize: 18,
+                  style: AppTextStyles.heading20.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF1976D2),
+                    color: AppColors.primary,
+                    // color: Color(0xFF1976D2),
                   ),
+                  // style: TextStyle(
+                  //   fontSize: 18,
+                  //   fontWeight: FontWeight.bold,
+                  //   color: Color(0xFF1976D2),
+                  // ),
                 ),
               ],
             ),

@@ -13,13 +13,11 @@ class CustomGridViewHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverPadding(
       padding: EdgeInsets.symmetric(horizontal: 12),
-      sliver: SliverList(
-        delegate: SliverChildBuilderDelegate(childCount: allProperties.length, (
-          context,
-          index,
-        ) {
+      sliver: SliverList.builder(
+        itemCount: allProperties.length,
+        itemBuilder: (context, index) {
           return CustomItemGridViewHome(property: allProperties[index]);
-        }),
+        },
       ),
     );
   }

@@ -20,7 +20,7 @@ class PropertyDetailForItemGridViewHome extends StatelessWidget {
       children: [
         Icon(icon, size: 16, color: Colors.grey[600]),
         SizedBox(width: 4),
-        Text(text, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
+        Text(text, style: TextStyle(fontSize: 12, color: Colors.grey[800])),
       ],
     );
   }

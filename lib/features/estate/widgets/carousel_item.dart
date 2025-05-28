@@ -24,8 +24,8 @@ class CarouselItem extends StatelessWidget {
         children: [
           // الصورة
           Container(
-            width: double.infinity,
-            height: 280,
+            // width: double.infinity,
+            // height: 280, // نفس ارتفاع pageView
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(property.imageUrl),

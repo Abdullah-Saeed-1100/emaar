@@ -1,5 +1,4 @@
-// import 'package:emaar/core/utils/app_images.dart';
-// import 'package:flutter/material.dart';
+import 'dart:ui';
 
 import 'package:emaar/core/utils/app_colors.dart';
 import 'package:emaar/core/utils/app_images.dart';
@@ -18,11 +17,13 @@ class CustomSliverAppBarHome extends StatelessWidget {
       pinned: false,
       stretch: true,
       elevation: 0,
-      backgroundColor: AppColors.primaryBackgrond,
-      // systemOverlayStyle: SystemUiOverlayStyle.dark,
+      backgroundColor: Colors.black12,
+      // backgroundColor: Colors.transparent,
+      systemOverlayStyle: SystemUiOverlayStyle.light,
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: [
+            // Background image
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -38,7 +39,8 @@ class CustomSliverAppBarHome extends StatelessWidget {
                   colors: [
                     Colors.transparent,
                     Colors.black87,
-                    Colors.transparent,
+                    Colors.black38,
+                    // Colors.transparent,
                   ],
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
@@ -83,34 +85,36 @@ class CustomSliverAppBarHome extends StatelessWidget {
           ],
         ),
       ),
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(60),
-        child: Container(
-          color: AppColors.primaryBackgrond,
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey[300]!),
-            ),
-            child: TextField(
-              textAlign: TextAlign.right,
-              decoration: InputDecoration(
-                hintText: 'ابحث عن عقار...',
-                hintStyle: TextStyle(color: Colors.grey[500]),
-                prefixIcon: Icon(Icons.tune, color: Colors.grey[600]),
-                suffixIcon: Icon(Icons.search, color: Colors.grey[600]),
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+
+      // Search bar at the bottom
+      // bottom: PreferredSize(
+      //   preferredSize: Size.fromHeight(60),
+      //   child: Container(
+      //     color: AppColors.primaryBackground,
+      //     padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+      //     child: Container(
+      //       decoration: BoxDecoration(
+      //         color: Colors.white,
+      //         borderRadius: BorderRadius.circular(8),
+      //         border: Border.all(color: Colors.grey[300]!),
+      //       ),
+      //       child: TextField(
+      //         textAlign: TextAlign.right,
+      //         decoration: InputDecoration(
+      //           hintText: 'ابحث عن عقار...',
+      //           hintStyle: TextStyle(color: Colors.grey[500]),
+      //           prefixIcon: Icon(Icons.tune, color: Colors.grey[600]),
+      //           suffixIcon: Icon(Icons.search, color: Colors.grey[600]),
+      //           border: InputBorder.none,
+      //           contentPadding: EdgeInsets.symmetric(
+      //             horizontal: 16,
+      //             vertical: 12,
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

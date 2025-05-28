@@ -14,6 +14,16 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
+  static const heading22 = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+  );
+  static const heading20 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+  );
 
   // =========== > Body Styles < ===========
 
@@ -39,6 +49,11 @@ class AppTextStyles {
   );
   static const body14 = TextStyle(
     fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: Colors.white,
+  );
+  static const body12 = TextStyle(
+    fontSize: 12,
     fontWeight: FontWeight.normal,
     color: Colors.white,
   );

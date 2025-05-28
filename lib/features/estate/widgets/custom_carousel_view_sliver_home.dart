@@ -57,13 +57,13 @@ class _CustomCarouselViewSliverHomeState
 
   int _currentCarouselIndex = 0;
   void _startAutoSlide() {
-    Future.delayed(Duration(seconds: 4), () {
+    Future.delayed(Duration(seconds: 5), () {
       if (mounted) {
         int nextIndex =
             (_currentCarouselIndex + 1) % _featuredProperties.length;
         _pageController.animateToPage(
           nextIndex,
-          duration: Duration(milliseconds: 300),
+          duration: Duration(milliseconds: 600),
           curve: Curves.easeInOut,
         );
         _startAutoSlide();
