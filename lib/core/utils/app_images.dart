@@ -11,6 +11,10 @@ class AppImages {
   static const String onBoarding2Background =
       '${path}on_boarding2_background.png';
 
+  // home
+  static const String homeAppBarBackground =
+      '${path}home_appbar_background.png';
+
   // root
   // static const String robotActive = '${path}robot_active.svg';
   // static const String robotInactive = '${path}robot_inactive.svg';

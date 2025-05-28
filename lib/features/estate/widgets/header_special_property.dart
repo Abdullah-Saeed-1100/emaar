@@ -1,0 +1,23 @@
+import 'package:emaar/features/estate/widgets/custom_header_home.dart';
+import 'package:flutter/material.dart';
+
+class HeaderSpecialProperty extends StatelessWidget {
+  const HeaderSpecialProperty({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: CustomHeaderHome(
+        title: 'العقارات المميزة',
+        trailing: Text(
+          'عرض الكل',
+          style: TextStyle(
+            fontSize: 14,
+            color: Color(0xFF1976D2),
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
+    );
+  }
+}
