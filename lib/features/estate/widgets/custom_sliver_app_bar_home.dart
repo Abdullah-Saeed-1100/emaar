@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:emaar/core/utils/app_colors.dart';
 import 'package:emaar/core/utils/app_images.dart';
 import 'package:emaar/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +9,7 @@ class CustomSliverAppBarHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      expandedHeight: 180,
+      expandedHeight: 120,
       floating: false,
       pinned: false,
       stretch: true,
