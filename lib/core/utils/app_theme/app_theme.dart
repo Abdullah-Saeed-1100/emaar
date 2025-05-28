@@ -15,6 +15,7 @@ class AppTheme {
       primaryColor: AppColors.primary,
       scaffoldBackgroundColor: AppColors.primaryBackgrond,
       textTheme: TextTheme(
+        bodyLarge: AppTextStyles.body18,
         headlineLarge: AppTextStyles.heading26,
         headlineMedium: AppTextStyles.heading24,
       ),

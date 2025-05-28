@@ -1,4 +1,3 @@
-import 'package:emaar/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import '../../../core/widgets/custom_animated.dart';
 
@@ -46,7 +45,7 @@ class OnBoardingContent extends StatelessWidget {
                 SizedBox(height: 16),
                 Text(
                   description,
-                  style: AppTextStyles.body20,
+                  style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 // SizedBox(height: 30),

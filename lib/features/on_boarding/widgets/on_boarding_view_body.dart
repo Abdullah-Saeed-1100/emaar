@@ -2,6 +2,7 @@ import 'package:emaar/features/on_boarding/widgets/on_boarding_content.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../../core/utils/app_colors.dart';
+import '../../../core/services/cache_helper.dart';
 import '../../../core/utils/app_images.dart';
 import '../../../core/widgets/custom_animated.dart';
 import '../../../../core/widgets/primary_button.dart';
@@ -81,10 +82,10 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
                   );
                 } else {
                   // save Done Onboarding
-                  // await CacheHelper.saveBool(
-                  //   CacheKeys.onboardingCompleted,
-                  //   true,
-                  // );
+                  await CacheHelper.saveBool(
+                    CacheKeys.onboardingCompleted,
+                    true,
+                  );
 
                   // Navigator push replace
                   Navigator.pushReplacement(
