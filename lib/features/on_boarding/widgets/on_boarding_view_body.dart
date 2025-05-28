@@ -37,7 +37,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
       children: [
         PageView(
           controller: _pageController,
-          // onPageChanged: (_) => setState(() {}),
+          onPageChanged: (_) => setState(() {}),
           children: const [
             OnBoardingContent(
               image: AppImages.onBoarding1Background,
@@ -89,6 +89,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
 
                   // Navigator push replace
                   Navigator.pushReplacement(
+                    // ignore: use_build_context_synchronously
                     context,
                     MaterialPageRoute(builder: (context) => EstateHomeView()),
                   );
