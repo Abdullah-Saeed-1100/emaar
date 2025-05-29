@@ -6,7 +6,7 @@ import '../../../core/services/cache_helper.dart';
 import '../../../core/utils/app_images.dart';
 import '../../../core/widgets/custom_animated.dart';
 import '../../../../core/widgets/primary_button.dart';
-import '../../estate/views/estate_home/estate_home_view.dart';
+import '../../estate/presentation/views/estate_home/estate_home_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});

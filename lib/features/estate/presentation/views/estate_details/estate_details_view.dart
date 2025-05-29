@@ -1,11 +1,13 @@
 import 'package:emaar/core/utils/app_colors.dart';
 import 'package:emaar/core/utils/app_text_styles.dart';
+import 'package:emaar/features/estate/presentation/views/estate_details/widgets/main_image_details.dart';
+import 'package:emaar/features/estate/presentation/views/estate_details/widgets/sub_images_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/entities/property_entity.dart';
-import '../../../../core/utils/app_images.dart';
-import '../../presentation/cubits/navigate_between_images_details_cubit/navigate_between_images_details_cubit.dart';
+import '../../../../../core/entities/property_entity.dart';
+import '../../../../../core/utils/app_images.dart';
+import '../../cubits/navigate_between_images_details_cubit/navigate_between_images_details_cubit.dart';
 
 class EstateDetailsView extends StatefulWidget {
   final PropertyEntity property;
@@ -386,109 +388,4 @@ class EstateDetailsViewState extends State<EstateDetailsView> {
     widget.property.image,
     ...widget.property.images,
   ];
-}
-
-class SubImagesDetails extends StatelessWidget {
-  const SubImagesDetails({super.key, required this.subImages});
-
-  final List<String> subImages;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      margin: EdgeInsets.symmetric(horizontal: 12),
-
-      // alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: subImages.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.only(
-              left: index + 1 == subImages.length ? 0 : 6,
-            ),
-            child: GestureDetector(
-              onTap: () {
-                context.watch<NavigateBetweenImagesDetailsCubit>().navigateTo(
-                  index: index,
-                );
-                // setState(() {
-                //   selectedImageIndex = index;
-                // });
-              },
-              child: Container(
-                width: 70,
-                height: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color:
-                        context
-                                    .read<NavigateBetweenImagesDetailsCubit>()
-                                    .state ==
-                                index
-                            ? AppColors.primary
-                            : Colors.transparent,
-                    width: 3,
-                  ),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(subImages[index], fit: BoxFit.cover),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class MainImageDetails extends StatelessWidget {
-  const MainImageDetails({super.key, required this.houseImages});
-
-  final List<String> houseImages;
-
-  @override
-  Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1,
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10,
-              offset: Offset(0, 5),
-            ),
-          ],
-        ),
-        child: Image.network(
-          houseImages[context
-              .watch<NavigateBetweenImagesDetailsCubit>()
-              .state], // استخدام الحالة من الكيوبت وتحديث تلقائي
-          fit: BoxFit.cover,
-          loadingBuilder: (context, child, loadingProgress) {
-            if (loadingProgress == null) return child;
-            return Center(
-              child: CircularProgressIndicator(
-                value:
-                    loadingProgress.expectedTotalBytes != null
-                        ? loadingProgress.cumulativeBytesLoaded /
-                            loadingProgress.expectedTotalBytes!
-                        : null,
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
 }

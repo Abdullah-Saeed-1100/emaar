@@ -1,4 +1,4 @@
-import 'package:emaar/features/estate/views/estate_home/widgets/custom_header_home.dart';
+import 'package:emaar/features/estate/presentation/views/estate_home/widgets/custom_header_home.dart';
 import 'package:flutter/material.dart';
 
 class HeaderAllProperty extends StatelessWidget {

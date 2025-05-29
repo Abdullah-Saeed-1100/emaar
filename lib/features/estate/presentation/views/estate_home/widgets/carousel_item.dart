@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/entities/property_entity.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_images.dart';
-import '../../estate_details/estate_details.dart';
+import '../../../../../../core/entities/property_entity.dart';
+import '../../../../../../core/utils/app_colors.dart';
+import '../../../../../../core/utils/app_images.dart';
+import '../../estate_details/estate_details_view.dart';
 
 class CarouselItem extends StatelessWidget {
   final PropertyEntity property;
