@@ -64,17 +64,9 @@ class CustomItemGridViewHome extends StatelessWidget {
                       ),
                   errorWidget:
                       (context, url, error) => Container(
-                        // height: 200,
-                        // width: double.infinity,
-                        clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(
-                          // borderRadius: BorderRadius.only(
-                          //   bottomLeft: Radius.circular(8),
-                          //   bottomRight: Radius.circular(8),
-                          // ),
                           image: DecorationImage(
-                            // image: NetworkImage(property.imageUrl),
-                            image: AssetImage(AppImages.homeAppBarBackground),
+                            image: AssetImage(AppImages.logo),
                             fit: BoxFit.cover,
                           ),
                         ),
