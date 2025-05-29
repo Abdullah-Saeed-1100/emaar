@@ -1,6 +1,6 @@
-import 'package:emaar/features/estate/presentation/cubits/home_state.dart';
+import 'package:emaar/features/estate/presentation/cubits/home_cubit/home_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/repos/estate_repo/estate_repo.dart';
+import '../../../../../core/repos/estate_repo/estate_repo.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final EstateRepo estateRepo;

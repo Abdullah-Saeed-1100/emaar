@@ -1,11 +1,11 @@
 import 'dart:developer';
 import 'package:emaar/core/utils/app_images.dart';
 import 'package:emaar/core/utils/app_text_styles.dart';
-import 'package:emaar/features/estate/presentation/cubits/home_cubit.dart';
+import 'package:emaar/features/estate/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../presentation/cubits/home_state.dart';
+import '../../../presentation/cubits/home_cubit/home_state.dart';
 
 class CustomSliverAppBarHome extends StatelessWidget {
   const CustomSliverAppBarHome({super.key});

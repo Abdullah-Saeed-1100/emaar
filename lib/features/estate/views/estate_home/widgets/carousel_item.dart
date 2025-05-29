@@ -22,7 +22,7 @@ class CarouselItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => HouseDetailsScreen(property: property),
+            builder: (context) => EstateDetailsView(property: property),
           ),
         );
       },

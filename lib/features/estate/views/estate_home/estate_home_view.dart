@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/repos/estate_repo/estate_repo.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../presentation/cubits/home_cubit.dart';
+import '../../presentation/cubits/home_cubit/home_cubit.dart';
 
 class EstateHomeView extends StatelessWidget {
   const EstateHomeView({super.key});

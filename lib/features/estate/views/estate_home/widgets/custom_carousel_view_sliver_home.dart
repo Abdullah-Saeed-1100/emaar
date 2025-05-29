@@ -7,8 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../presentation/cubits/home_cubit.dart';
-import '../../../presentation/cubits/home_state.dart';
+import '../../../presentation/cubits/home_cubit/home_cubit.dart';
+import '../../../presentation/cubits/home_cubit/home_state.dart';
 
 class CustomCarouselViewSliverHome extends StatefulWidget {
   const CustomCarouselViewSliverHome({super.key});
