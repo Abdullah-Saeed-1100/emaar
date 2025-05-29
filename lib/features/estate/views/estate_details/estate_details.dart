@@ -436,15 +436,15 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: Colors.blue[50],
+        color: AppColors.primary10,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
         label,
         style: TextStyle(
-          fontSize: 12,
-          color: Colors.blue[700],
-          fontWeight: FontWeight.w500,
+          fontSize: 12.5,
+          color: AppColors.primary,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
