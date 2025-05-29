@@ -1,7 +1,5 @@
-import 'package:emaar/core/utils/app_colors.dart';
 import 'package:emaar/features/estate/widgets/custom_header_home.dart';
 import 'package:flutter/material.dart';
-
 import '../../../core/utils/app_text_styles.dart';
 
 class HeaderSpecialProperty extends StatelessWidget {

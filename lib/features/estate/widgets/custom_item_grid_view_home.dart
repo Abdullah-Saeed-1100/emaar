@@ -1,11 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:emaar/core/entities/property_entity.dart';
 import 'package:emaar/core/utils/app_colors.dart';
+import 'package:emaar/core/utils/app_images.dart';
 import 'package:emaar/core/utils/app_text_styles.dart';
-import 'package:emaar/features/estate/data/models/property_test_model.dart';
 import 'package:emaar/features/estate/widgets/property_detail_for_item_grid_view_home.dart';
 import 'package:flutter/material.dart';
 
 class CustomItemGridViewHome extends StatelessWidget {
-  final PropertyTestModel property;
+  final PropertyEntity property;
 
   const CustomItemGridViewHome({super.key, required this.property});
 
@@ -34,20 +36,49 @@ class CustomItemGridViewHome extends StatelessWidget {
             aspectRatio: 2 / 1, // نسبة العرض إلى الارتفاع
             child: Stack(
               children: [
-                Container(
-                  // height: 200,
-                  // width: double.infinity,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    // borderRadius: BorderRadius.only(
-                    //   bottomLeft: Radius.circular(8),
-                    //   bottomRight: Radius.circular(8),
-                    // ),
-                    image: DecorationImage(
-                      image: NetworkImage(property.imageUrl),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                CachedNetworkImage(
+                  imageUrl: property.image,
+                  imageBuilder:
+                      (context, imageProvider) => Container(
+                        // height: 200,
+                        // width: double.infinity,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          // borderRadius: BorderRadius.only(
+                          //   bottomLeft: Radius.circular(8),
+                          //   bottomRight: Radius.circular(8),
+                          // ),
+                          image: DecorationImage(
+                            // image: NetworkImage(property.imageUrl),
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                  progressIndicatorBuilder:
+                      (context, url, downloadProgress) => Center(
+                        child: CircularProgressIndicator(
+                          value: downloadProgress.progress,
+                          color: AppColors.primary,
+                        ),
+                      ),
+                  errorWidget:
+                      (context, url, error) => Container(
+                        // height: 200,
+                        // width: double.infinity,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          // borderRadius: BorderRadius.only(
+                          //   bottomLeft: Radius.circular(8),
+                          //   bottomRight: Radius.circular(8),
+                          // ),
+                          image: DecorationImage(
+                            // image: NetworkImage(property.imageUrl),
+                            image: AssetImage(AppImages.homeAppBarBackground),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
                 ),
                 // نوع العقار
                 Positioned(
@@ -57,13 +88,13 @@ class CustomItemGridViewHome extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                     decoration: BoxDecoration(
                       color:
-                          property.type == PropertyType.sale
+                          property.status == "للبيع"
                               ? Colors.green
                               : AppColors.primary,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
-                      property.type == PropertyType.sale ? 'للبيع' : 'للإيجار',
+                      property.status == "للبيع" ? 'للبيع' : 'للإيجار',
                       style: AppTextStyles.body12.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -95,7 +126,7 @@ class CustomItemGridViewHome extends StatelessWidget {
                         // color: isFavorite ? Colors.red : Colors.grey[600],
                         Icons.favorite_border,
                         // color: AppColors.primary,
-                        color: Colors.grey[600],
+                        color: Colors.white,
                         size: 22,
                       ),
                     ),
@@ -126,7 +157,7 @@ class CustomItemGridViewHome extends StatelessWidget {
                     SizedBox(width: 4),
                     Expanded(
                       child: Text(
-                        property.location,
+                        '${property.city}, ${property.address}',
                         style: TextStyle(color: Colors.grey[800], fontSize: 13),
                       ),
                     ),
@@ -138,12 +169,12 @@ class CustomItemGridViewHome extends StatelessWidget {
                   children: [
                     PropertyDetailForItemGridViewHome(
                       icon: Icons.bed,
-                      text: '${property.beds}',
+                      text: '${property.bedrooms}',
                     ),
                     SizedBox(width: 16),
                     PropertyDetailForItemGridViewHome(
                       icon: Icons.bathtub,
-                      text: '${property.baths}',
+                      text: '${property.bathrooms}',
                     ),
                     SizedBox(width: 16),
                     PropertyDetailForItemGridViewHome(
@@ -155,7 +186,7 @@ class CustomItemGridViewHome extends StatelessWidget {
                 SizedBox(height: 12),
                 // السعر
                 Text(
-                  property.price,
+                  '${property.price.toInt()} ريال',
                   style: AppTextStyles.heading20.copyWith(
                     fontWeight: FontWeight.bold,
                     color: AppColors.primary,

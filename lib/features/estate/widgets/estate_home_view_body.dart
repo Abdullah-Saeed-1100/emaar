@@ -1,4 +1,3 @@
-import 'package:emaar/features/estate/data/models/dummy_data.dart';
 import 'package:emaar/features/estate/widgets/custom_carousel_view_sliver_home.dart';
 import 'package:emaar/features/estate/widgets/custom_grid_view_home.dart';
 import 'package:emaar/features/estate/widgets/custom_search_bar.dart';
@@ -24,7 +23,7 @@ class EstateHomeViewBody extends StatelessWidget {
 
         // GridView - الجزء الثالث
         HeaderAllProperty(),
-        CustomGridViewHome(allProperties: dummyProperties()),
+        CustomGridViewHome(),
       ],
     );
   }

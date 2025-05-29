@@ -43,7 +43,7 @@ class PropertyModel {
       status: json['status'] as String,
       city: json['city'] as String,
       address: json['address'] as String,
-      isFeatured: json['special'] as bool,
+      isFeatured: json['is_featured'] as bool,
       bedrooms: json['bedrooms'] as int,
       bathrooms: json['bathrooms'] as int,
       area: json['area'] as String,

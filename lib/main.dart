@@ -4,7 +4,6 @@ import 'package:emaar/core/utils/app_keys.dart';
 import 'package:emaar/features/estate/views/estate_home_view.dart';
 import 'package:emaar/features/on_boarding/widgets/on_boarding_view_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -39,6 +38,7 @@ class EmaarApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Emaar App',
       // for Localization
       locale: const Locale('ar'),

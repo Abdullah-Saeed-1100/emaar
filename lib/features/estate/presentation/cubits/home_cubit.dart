@@ -8,14 +8,21 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> fetchProperties() async {
     emit(HomeLoadingState());
-
+    await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
     final result = await estateRepo.getAllEstates(tableName: 'properties');
     result.fold(
       (failure) {
         emit(HomeErrorState(errMessage: failure.message));
       },
       (properties) {
-        emit(HomeSuccessState(properties: properties));
+        final featuredProperties =
+            properties.where((property) => property.isFeatured).toList();
+        emit(
+          HomeSuccessState(
+            properties: properties,
+            propertiesFetured: featuredProperties,
+          ),
+        );
       },
     );
   }
