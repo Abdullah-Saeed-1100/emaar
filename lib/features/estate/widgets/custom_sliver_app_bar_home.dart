@@ -2,13 +2,16 @@ import 'dart:developer';
 
 import 'package:emaar/core/utils/app_images.dart';
 import 'package:emaar/core/utils/app_text_styles.dart';
+import 'package:emaar/features/estate/presentation/cubits/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/repos/estate_repo/estate_repo.dart' show EstateRepo;
 import '../../../core/services/supabase_database_service.dart';
 import '../../../main.dart';
 import '../../../core/models/property_model.dart';
+import '../presentation/cubits/home_state.dart';
 
 class CustomSliverAppBarHome extends StatelessWidget {
   const CustomSliverAppBarHome({super.key});
@@ -68,46 +71,42 @@ class CustomSliverAppBarHome extends StatelessWidget {
                             Text('إعمار', style: AppTextStyles.heading26),
                           ],
                         ),
-                        GestureDetector(
-                          onTap: () async {
-                            // try {
-                            // final data =
-                            //     await supabase.from('property').select();
-                            // final List<PropertyModel> properties =
-                            //     data
-                            //         .map<PropertyModel>(
-                            //           (item) => PropertyModel.fromJson(item),
-                            //         )
-                            //         .toList();
-                            // final data = await SupabaseDatabaseService.fetch(
-                            //   table: "property",
-                            // );
-                            // final List<PropertyModel> properties =
-                            //     data
-                            //         .map<PropertyModel>(
-                            //           (item) => PropertyModel.fromJson(item),
-                            //         )
-                            //         .toList();
-
-                            //   log(
-                            //     'Fetched data: ${properties.first.toString()}',
-                            //   );
-                            // } on Exception catch (e) {
-                            //   log('Error fetching data: $e');
-                            // }
+                        BlocConsumer<HomeCubit, HomeState>(
+                          listener: (context, state) {
+                            if (state is HomeErrorState) {
+                              log(
+                                'Error fetching properties: ${state.errMessage}',
+                              );
+                            } else if (state is HomeSuccessState) {
+                              log(
+                                'Properties fetched successfully: ${state.properties.length}',
+                              );
+                            }
                           },
-                          child: Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.white30,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Icon(
-                              Icons.notifications_outlined,
-                              color: Colors.white,
-                              size: 24,
-                            ),
-                          ),
+                          builder: (context, state) {
+                            if (state is HomeLoadingState) {
+                              return CircularProgressIndicator(
+                                color: Colors.white,
+                              );
+                            }
+                            return GestureDetector(
+                              onTap: () async {
+                                context.read<HomeCubit>().fetchProperties();
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: Colors.white30,
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Icon(
+                                  Icons.notifications_outlined,
+                                  color: Colors.white,
+                                  size: 24,
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),
