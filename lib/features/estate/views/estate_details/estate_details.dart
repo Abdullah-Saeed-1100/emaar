@@ -1,6 +1,9 @@
+import 'package:emaar/core/utils/app_colors.dart';
+import 'package:emaar/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/entities/property_entity.dart';
+import '../../../../core/utils/app_images.dart';
 
 class HouseDetailsScreen extends StatefulWidget {
   final PropertyEntity property;
@@ -18,59 +21,67 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
     'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  ];
+
+  final List<String> amenities = [
+    'مسبح خاص',
+    'موقف سيارات',
+    'غرفة رياضة',
+    'حديقة',
+    'مطبخ مجهز',
+    'تكييف مركزي',
+    'أمن وحراسة',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: isFavorite ? Colors.red : Colors.black,
-            ),
-            onPressed: () {
-              setState(() {
-                isFavorite = !isFavorite;
-              });
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.share, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
-      ),
+      backgroundColor: AppColors.primaryBackground,
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+      //     onPressed: () => Navigator.pop(context),
+      //   ),
+      //   actions: [
+      //     IconButton(
+      //       icon: Icon(
+      //         isFavorite ? Icons.favorite : Icons.favorite_border,
+      //         color: isFavorite ? Colors.red : Colors.black,
+      //       ),
+      //       onPressed: () {
+      //         setState(() {
+      //           isFavorite = !isFavorite;
+      //         });
+      //       },
+      //     ),
+      //     IconButton(
+      //       icon: Icon(Icons.share, color: Colors.black),
+      //       onPressed: () {},
+      //     ),
+      //   ],
+      // ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             // Main Image Section
-            Container(
-              height: 300,
-              width: double.infinity,
-              margin: EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 10,
-                    offset: Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
+            AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 10,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                ),
                 child: Image.network(
                   houseImages[selectedImageIndex],
                   fit: BoxFit.cover,
@@ -95,44 +106,53 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
             // Sub Images Section
             Container(
               height: 80,
-              margin: EdgeInsets.symmetric(horizontal: 16),
+              margin: EdgeInsets.symmetric(horizontal: 12),
+
+              // alignment: Alignment.center,
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
               decoration: BoxDecoration(
-                color: Colors.pink[100],
-                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(houseImages.length, (index) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedImageIndex = index;
-                      });
-                    },
-                    child: Container(
-                      width: 70,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                          color:
-                              selectedImageIndex == index
-                                  ? Colors.blue
-                                  : Colors.transparent,
-                          width: 2,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+
+                itemCount: houseImages.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      left: index + 1 == houseImages.length ? 0 : 6,
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedImageIndex = index;
+                        });
+                      },
+                      child: Container(
+                        width: 70,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color:
+                                selectedImageIndex == index
+                                    ? AppColors.primary
+                                    : Colors.transparent,
+                            width: 3,
+                          ),
                         ),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          houseImages[index],
-                          fit: BoxFit.cover,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.network(
+                            houseImages[index],
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                   );
-                }),
+                },
               ),
             ),
 
@@ -140,8 +160,8 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
 
             // House Information Section
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 16),
-              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.symmetric(horizontal: 12),
+              padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
@@ -172,10 +192,8 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
                       ),
                       Text(
                         '2,500,000 ريال',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green[600],
+                        style: AppTextStyles.heading20.copyWith(
+                          color: AppColors.primary,
                         ),
                       ),
                     ],
@@ -228,6 +246,7 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
                   SizedBox(height: 8),
                   Text(
                     'فيلا فاخرة تتميز بتصميم عصري وإطلالة رائعة، تحتوي على 5 غرف نوم رئيسية مع حمامات مستقلة، صالة واسعة، مطبخ مجهز بالكامل، حديقة واسعة مع مسبح خاص. الفيلا مصممة بأحدث المعايير العالمية وتقع في موقع متميز قريب من جميع الخدمات.',
+                    textAlign: TextAlign.justify,
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey[700],
@@ -250,14 +269,10 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
-                    children: [
-                      _buildAmenityChip('مسبح خاص'),
-                      _buildAmenityChip('موقف سيارات'),
-                      _buildAmenityChip('حديقة'),
-                      _buildAmenityChip('مطبخ مجهز'),
-                      _buildAmenityChip('تكييف مركزي'),
-                      _buildAmenityChip('أمن وحراسة'),
-                    ],
+                    children:
+                        amenities
+                            .map((amenity) => _buildAmenityChip(amenity))
+                            .toList(),
                   ),
 
                   SizedBox(height: 20),
@@ -273,9 +288,7 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
                       children: [
                         CircleAvatar(
                           radius: 25,
-                          backgroundImage: NetworkImage(
-                            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80',
-                          ),
+                          backgroundImage: AssetImage(AppImages.me),
                         ),
                         SizedBox(width: 12),
                         Expanded(
@@ -283,7 +296,7 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'أحمد السعيد',
+                                'عبدالله سعيد',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -306,7 +319,10 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
                               onPressed: () {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.message, color: Colors.blue),
+                              icon: Icon(
+                                Icons.message,
+                                color: AppColors.primary,
+                              ),
                               onPressed: () {},
                             ),
                           ],
@@ -322,10 +338,18 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
           ],
         ),
       ),
+
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(20),
+        margin: EdgeInsets.symmetric(horizontal: 12),
+        padding: EdgeInsets.all(12),
+        clipBehavior: Clip.antiAlias,
+
         decoration: BoxDecoration(
           color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(12),
+            topRight: Radius.circular(12),
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.1),
@@ -340,7 +364,7 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue[600],
+                  backgroundColor: AppColors.primary,
                   padding: EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -362,7 +386,7 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
                 onPressed: () {},
                 style: OutlinedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 16),
-                  side: BorderSide(color: Colors.blue[600]!),
+                  side: BorderSide(color: AppColors.primary),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -372,7 +396,7 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue[600],
+                    color: Colors.black,
                   ),
                 ),
               ),
@@ -389,10 +413,10 @@ class HouseDetailsScreenState extends State<HouseDetailsScreen> {
         Container(
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.blue[50],
+            color: AppColors.primary10,
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Icon(icon, color: Colors.blue[600], size: 24),
+          child: Icon(icon, color: AppColors.primary, size: 24),
         ),
         SizedBox(height: 8),
         Text(

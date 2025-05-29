@@ -15,16 +15,6 @@ class AppImages {
   static const String homeAppBarBackground =
       '${path}home_appbar_background.png';
 
-  // root
-  // static const String robotActive = '${path}robot_active.svg';
-  // static const String robotInactive = '${path}robot_inactive.svg';
-
-  // chat
-  // static const String send = '${path}send.svg';
-  // static const String lightMode = '${path}light_mode.svg';
-  // static const String darkMode = '${path}dark_mode.svg';
-
-  // animations
-  // static const String loadingAnimation =
-  //     'assets/animations/loading_animation.json';
+  // details
+  static const String me = '${path}me.png';
 }
