@@ -3,7 +3,7 @@ import 'package:emaar/core/entities/property_entity.dart';
 import 'package:emaar/core/utils/app_colors.dart';
 import 'package:emaar/core/utils/app_images.dart';
 import 'package:emaar/core/utils/app_text_styles.dart';
-import 'package:emaar/features/estate/widgets/property_detail_for_item_grid_view_home.dart';
+import 'package:emaar/features/estate/views/estate_home/widgets/property_detail_for_item_grid_view_home.dart';
 import 'package:flutter/material.dart';
 
 class CustomItemGridViewHome extends StatelessWidget {

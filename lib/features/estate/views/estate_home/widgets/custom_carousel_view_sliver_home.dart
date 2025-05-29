@@ -1,14 +1,14 @@
 import 'package:emaar/core/entities/property_entity.dart';
 import 'package:emaar/core/utils/app_colors.dart';
 import 'package:emaar/features/estate/data/models/dummy_data.dart';
-import 'package:emaar/features/estate/widgets/carousel_item.dart';
+import 'package:emaar/features/estate/views/estate_home/widgets/carousel_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../presentation/cubits/home_cubit.dart';
-import '../presentation/cubits/home_state.dart';
+import '../../../presentation/cubits/home_cubit.dart';
+import '../../../presentation/cubits/home_state.dart';
 
 class CustomCarouselViewSliverHome extends StatefulWidget {
   const CustomCarouselViewSliverHome({super.key});

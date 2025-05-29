@@ -1,7 +1,7 @@
 import 'package:emaar/core/services/get_it_service.dart';
 import 'package:emaar/core/services/simple_bloc_observer.dart';
 import 'package:emaar/core/utils/app_keys.dart';
-import 'package:emaar/features/estate/views/estate_home_view.dart';
+import 'package:emaar/features/estate/views/estate_home/estate_home_view.dart';
 import 'package:emaar/features/on_boarding/widgets/on_boarding_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
