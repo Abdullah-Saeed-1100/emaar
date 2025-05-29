@@ -1,7 +1,14 @@
+import 'dart:developer';
+
 import 'package:emaar/core/utils/app_images.dart';
 import 'package:emaar/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../../../core/repos/estate_repo/estate_repo.dart' show EstateRepo;
+import '../../../core/services/supabase_database_service.dart';
+import '../../../main.dart';
+import '../../../core/models/property_model.dart';
 
 class CustomSliverAppBarHome extends StatelessWidget {
   const CustomSliverAppBarHome({super.key});
@@ -61,16 +68,45 @@ class CustomSliverAppBarHome extends StatelessWidget {
                             Text('إعمار', style: AppTextStyles.heading26),
                           ],
                         ),
-                        Container(
-                          padding: EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: Colors.white30,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Icon(
-                            Icons.notifications_outlined,
-                            color: Colors.white,
-                            size: 24,
+                        GestureDetector(
+                          onTap: () async {
+                            // try {
+                            // final data =
+                            //     await supabase.from('property').select();
+                            // final List<PropertyModel> properties =
+                            //     data
+                            //         .map<PropertyModel>(
+                            //           (item) => PropertyModel.fromJson(item),
+                            //         )
+                            //         .toList();
+                            // final data = await SupabaseDatabaseService.fetch(
+                            //   table: "property",
+                            // );
+                            // final List<PropertyModel> properties =
+                            //     data
+                            //         .map<PropertyModel>(
+                            //           (item) => PropertyModel.fromJson(item),
+                            //         )
+                            //         .toList();
+
+                            //   log(
+                            //     'Fetched data: ${properties.first.toString()}',
+                            //   );
+                            // } on Exception catch (e) {
+                            //   log('Error fetching data: $e');
+                            // }
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.white30,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Icon(
+                              Icons.notifications_outlined,
+                              color: Colors.white,
+                              size: 24,
+                            ),
                           ),
                         ),
                       ],
