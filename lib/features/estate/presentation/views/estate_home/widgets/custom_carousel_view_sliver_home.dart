@@ -33,7 +33,11 @@ class _CustomCarouselViewSliverHomeState
                 children: [
                   AspectRatio(
                     aspectRatio: 4 / 3,
-                    child: CarouselItem(property: dummyProperties()[0]),
+                    child: CarouselItem(
+                      property: dummyProperties()[0],
+                      index: 0,
+                      isLoading: true, // تمرير حالة التحميل
+                    ),
                   ),
                   SizedBox(height: 16),
                   // مؤشرات الصفحات
@@ -127,7 +131,10 @@ class _CustomCarouselViewSliverHomeWhenSuccessState
             },
             itemCount: widget.propertiesFetured.length,
             itemBuilder: (context, index) {
-              return CarouselItem(property: widget.propertiesFetured[index]);
+              return CarouselItem(
+                property: widget.propertiesFetured[index],
+                index: index,
+              );
             },
           ),
         ),

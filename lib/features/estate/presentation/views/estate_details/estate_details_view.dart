@@ -7,7 +7,12 @@ import '../../../../../core/entities/property_entity.dart';
 
 class EstateDetailsView extends StatefulWidget {
   final PropertyEntity property;
-  const EstateDetailsView({super.key, required this.property});
+  final bool fromFeaturedSection;
+  const EstateDetailsView({
+    super.key,
+    required this.property,
+    required this.fromFeaturedSection,
+  });
 
   @override
   EstateDetailsViewState createState() => EstateDetailsViewState();
@@ -26,7 +31,9 @@ class EstateDetailsViewState extends State<EstateDetailsView> {
             // Main Image and Sub Images Section
             MainAndSubImagesSectionDetails(
               estateImages: mainImageAndSubImages(),
-              tagHero: "${widget.property.id} isFeatured",
+              tagHero:
+                  // إذا كانت من قسم المميز أو لا
+                  "${widget.property.id}-${widget.fromFeaturedSection}", // ex: "1-true" or "1-false"
             ),
             SizedBox(height: 20),
 

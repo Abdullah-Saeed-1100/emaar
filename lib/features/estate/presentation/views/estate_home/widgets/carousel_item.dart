@@ -6,12 +6,14 @@ import '../../../../../../core/utils/app_images.dart';
 import '../../estate_details/estate_details_view.dart';
 
 class CarouselItem extends StatelessWidget {
+  final int index;
   final PropertyEntity property;
   final bool isLoading;
   const CarouselItem({
     super.key,
     required this.property,
     this.isLoading = false,
+    required this.index,
   });
 
   @override
@@ -22,7 +24,11 @@ class CarouselItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => EstateDetailsView(property: property),
+            builder:
+                (context) => EstateDetailsView(
+                  property: property,
+                  fromFeaturedSection: true,
+                ),
           ),
         );
       },
@@ -46,7 +52,7 @@ class CarouselItem extends StatelessWidget {
             // الصورة
             if (!isLoading)
               Hero(
-                tag: "${property.id} isFeatured",
+                tag: "${property.id}-true",
                 child: CachedNetworkImage(
                   imageUrl: property.image,
                   imageBuilder:
