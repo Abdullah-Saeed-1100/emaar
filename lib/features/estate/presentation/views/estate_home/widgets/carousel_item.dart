@@ -56,7 +56,7 @@ class CarouselItem extends StatelessWidget {
               Hero(
                 tag: "${property.id}-true",
                 child: CachedNetworkImage(
-                  imageUrl: property.image,
+                  imageUrl: property.mainImageUrl,
                   imageBuilder:
                       (context, imageProvider) => Container(
                         // width: double.infinity,

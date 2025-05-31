@@ -3,16 +3,16 @@ class PropertyEntity {
   // final DateTime createdAt;
   final String title;
   final String description;
-  final double price;
+  final int price;
   final String status;
   final String city;
   final String address;
   final bool isFeatured;
   final int bedrooms;
   final int bathrooms;
-  final String area;
-  final String image;
-  final List<String> images;
+  final int area;
+  final String mainImageUrl;
+  final List<String> subImagesUrls;
 
   PropertyEntity({
     required this.id,
@@ -27,7 +27,7 @@ class PropertyEntity {
     required this.bedrooms,
     required this.bathrooms,
     required this.area,
-    required this.image,
-    required this.images,
+    required this.mainImageUrl,
+    required this.subImagesUrls,
   });
 }

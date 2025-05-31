@@ -57,7 +57,7 @@ class CustomItemGridViewHome extends StatelessWidget {
                   Hero(
                     tag: "${property.id}-false",
                     child: CachedNetworkImage(
-                      imageUrl: property.image,
+                      imageUrl: property.mainImageUrl,
                       imageBuilder:
                           (context, imageProvider) => Container(
                             // height: 200,

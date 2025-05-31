@@ -8,34 +8,34 @@ List<PropertyEntity> dummyProperties() => [
     title: 'شقة بإطلالة رائعة',
     description:
         'شقة بإطلالة رائعة في حي الورود، الرياض، قريبة من جميع الخدمات.',
-    price: 45345358.0,
+    price: 45345358,
     status: "للبيع",
     city: 'الرياض',
     address: 'حي الورود',
     isFeatured: false,
     bedrooms: 2,
     bathrooms: 2,
-    area: "120 م",
-    image:
+    area: 120,
+    mainImageUrl:
         'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop',
-    images: [],
+    subImagesUrls: [],
   ),
   PropertyEntity(
     id: 4,
     title: 'شقة بإطلالة رائعة',
     description:
         'شقة بإطلالة رائعة في حي الورود، الرياض، قريبة من جميع الخدمات.',
-    price: 45345358.0,
+    price: 45345358,
     status: "للبيع",
     city: 'الرياض',
     address: 'حي الورود',
     isFeatured: false,
     bedrooms: 2,
     bathrooms: 2,
-    area: "120 م",
-    image:
+    area: 120,
+    mainImageUrl:
         'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop',
-    images: [],
+    subImagesUrls: [],
   ),
 ];
 //

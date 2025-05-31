@@ -45,5 +45,8 @@ class EstateDetailsView extends StatelessWidget {
   }
 
   // هذه الدالة تعيد قائمة الصورة الرئيسية والصور الفرعية
-  List<String> mainImageAndSubImages() => [property.image, ...property.images];
+  List<String> mainImageAndSubImages() => [
+    property.mainImageUrl,
+    ...property.subImagesUrls,
+  ];
 }
