@@ -19,7 +19,7 @@ class HomeCubit extends Cubit<HomeState> {
             properties.where((property) => property.isFeatured).toList();
         emit(
           HomeSuccessState(
-            properties: properties,
+            properties: properties.take(3).toList(), // Take first 3 properties
             propertiesFetured: featuredProperties,
           ),
         );

@@ -1,11 +1,7 @@
-import 'dart:developer';
 import 'package:emaar/core/utils/app_images.dart';
 import 'package:emaar/core/utils/app_text_styles.dart';
-import 'package:emaar/features/estate/presentation/cubits/home_cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../cubits/home_cubit/home_state.dart';
 
 class CustomSliverAppBarHome extends StatelessWidget {
   const CustomSliverAppBarHome({super.key});
@@ -65,42 +61,18 @@ class CustomSliverAppBarHome extends StatelessWidget {
                             Text('إعمار', style: AppTextStyles.heading26),
                           ],
                         ),
-                        BlocConsumer<HomeCubit, HomeState>(
-                          listener: (context, state) {
-                            if (state is HomeErrorState) {
-                              log(
-                                'Error fetching properties: ${state.errMessage}',
-                              );
-                            } else if (state is HomeSuccessState) {
-                              log(
-                                'Properties fetched successfully: ${state.properties.length}',
-                              );
-                            }
-                          },
-                          builder: (context, state) {
-                            if (state is HomeLoadingState) {
-                              return CircularProgressIndicator(
-                                color: Colors.white,
-                              );
-                            }
-                            return GestureDetector(
-                              onTap: () async {
-                                context.read<HomeCubit>().fetchProperties();
-                              },
-                              child: Container(
-                                padding: EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: Colors.white30,
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Icon(
-                                  Icons.notifications_outlined,
-                                  color: Colors.white,
-                                  size: 24,
-                                ),
-                              ),
-                            );
-                          },
+
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.white30,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Icon(
+                            Icons.notifications_outlined,
+                            color: Colors.white,
+                            size: 24,
+                          ),
                         ),
                       ],
                     ),
@@ -111,36 +83,6 @@ class CustomSliverAppBarHome extends StatelessWidget {
           ],
         ),
       ),
-
-      // Search bar at the bottom
-      // bottom: PreferredSize(
-      //   preferredSize: Size.fromHeight(60),
-      //   child: Container(
-      //     color: AppColors.primaryBackground,
-      //     padding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-      //     child: Container(
-      //       decoration: BoxDecoration(
-      //         color: Colors.white,
-      //         borderRadius: BorderRadius.circular(8),
-      //         border: Border.all(color: Colors.grey[300]!),
-      //       ),
-      //       child: TextField(
-      //         textAlign: TextAlign.right,
-      //         decoration: InputDecoration(
-      //           hintText: 'ابحث عن عقار...',
-      //           hintStyle: TextStyle(color: Colors.grey[500]),
-      //           prefixIcon: Icon(Icons.tune, color: Colors.grey[600]),
-      //           suffixIcon: Icon(Icons.search, color: Colors.grey[600]),
-      //           border: InputBorder.none,
-      //           contentPadding: EdgeInsets.symmetric(
-      //             horizontal: 16,
-      //             vertical: 12,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }
