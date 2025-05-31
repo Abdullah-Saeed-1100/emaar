@@ -14,6 +14,7 @@ class AppImages {
   // home
   static const String homeAppBarBackground =
       '${path}home_appbar_background.png';
+  static const String saudiCurrency = '${path}saudi_currency.svg';
 
   // details
   static const String me = '${path}me.png';

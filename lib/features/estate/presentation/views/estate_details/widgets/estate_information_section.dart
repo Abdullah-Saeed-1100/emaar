@@ -2,6 +2,7 @@ import 'package:emaar/core/utils/app_colors.dart';
 import 'package:emaar/core/utils/app_images.dart';
 import 'package:emaar/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../core/entities/property_entity.dart';
 import '../../../../../../core/functions/add_commas_to_price.dart';
@@ -43,11 +44,26 @@ class EstateInformationSection extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
-                '${addCommasToPrice(property.price.toInt())} ريال',
-                style: AppTextStyles.heading20.copyWith(
-                  color: AppColors.primary,
-                ),
+              Row(
+                children: [
+                  Text(
+                    addCommasToPrice(property.price.toInt()),
+                    style: AppTextStyles.heading20.copyWith(
+                      // color: AppColors.primary,
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(width: 6),
+                  SvgPicture.asset(
+                    AppImages.saudiCurrency,
+                    semanticsLabel: 'Saudi Riyal',
+                    width: 20,
+                    colorFilter: ColorFilter.mode(
+                      Colors.black,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
