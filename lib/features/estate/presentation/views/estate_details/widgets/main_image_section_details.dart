@@ -7,7 +7,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/utils/app_colors.dart';
 
 class MainImageSectionDetails extends StatelessWidget {
-  const MainImageSectionDetails({super.key, required this.estateImages});
+  final String tagHero;
+  const MainImageSectionDetails({
+    super.key,
+    required this.estateImages,
+    required this.tagHero,
+  });
 
   final List<String> estateImages;
 
@@ -29,40 +34,43 @@ class MainImageSectionDetails extends StatelessWidget {
             ),
           ],
         ),
-        child: CachedNetworkImage(
-          imageUrl:
-              estateImages[context
-                  .read<NavigateBetweenImagesDetailsCubit>()
-                  .state], // استخدام الحالة من الكيوبت وتحديث تلقائي
-          imageBuilder:
-              (context, imageProvider) => DecoratedBox(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: imageProvider,
-                    fit: BoxFit.cover,
+        child: Hero(
+          tag: tagHero,
+          child: CachedNetworkImage(
+            imageUrl:
+                estateImages[context
+                    .read<NavigateBetweenImagesDetailsCubit>()
+                    .state], // استخدام الحالة من الكيوبت وتحديث تلقائي
+            imageBuilder:
+                (context, imageProvider) => DecoratedBox(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-          progressIndicatorBuilder:
-              (context, url, downloadProgress) => Center(
-                child: SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: CircularProgressIndicator(
-                    value: downloadProgress.progress,
-                    color: AppColors.primary,
+            progressIndicatorBuilder:
+                (context, url, downloadProgress) => Center(
+                  child: SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: CircularProgressIndicator(
+                      value: downloadProgress.progress,
+                      color: AppColors.primary,
+                    ),
                   ),
                 ),
-              ),
-          errorWidget:
-              (context, url, error) => DecoratedBox(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(AppImages.logo),
-                    fit: BoxFit.cover,
+            errorWidget:
+                (context, url, error) => DecoratedBox(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(AppImages.logo),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
+          ),
         ),
       ),
     );

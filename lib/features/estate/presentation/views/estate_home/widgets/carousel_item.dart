@@ -45,39 +45,42 @@ class CarouselItem extends StatelessWidget {
           children: [
             // الصورة
             if (!isLoading)
-              CachedNetworkImage(
-                imageUrl: property.image,
-                imageBuilder:
-                    (context, imageProvider) => Container(
-                      // width: double.infinity,
-                      // height: 280, // نفس ارتفاع pageView
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover,
+              Hero(
+                tag: "${property.id} isFeatured",
+                child: CachedNetworkImage(
+                  imageUrl: property.image,
+                  imageBuilder:
+                      (context, imageProvider) => Container(
+                        // width: double.infinity,
+                        // height: 280, // نفس ارتفاع pageView
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
-                progressIndicatorBuilder:
-                    (context, url, downloadProgress) => Center(
-                      child: SizedBox(
-                        height: 50,
-                        width: 50,
-                        child: CircularProgressIndicator(
-                          value: downloadProgress.progress,
-                          color: AppColors.primary,
+                  progressIndicatorBuilder:
+                      (context, url, downloadProgress) => Center(
+                        child: SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: CircularProgressIndicator(
+                            value: downloadProgress.progress,
+                            color: AppColors.primary,
+                          ),
                         ),
                       ),
-                    ),
-                errorWidget:
-                    (context, url, error) => Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(AppImages.logo),
-                          fit: BoxFit.cover,
+                  errorWidget:
+                      (context, url, error) => Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(AppImages.logo),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                    ),
+                ),
               ),
             // التدرج
             if (!isLoading)

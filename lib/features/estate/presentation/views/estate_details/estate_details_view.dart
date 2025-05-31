@@ -1,12 +1,9 @@
 import 'package:emaar/core/utils/app_colors.dart';
 import 'package:emaar/features/estate/presentation/views/estate_details/widgets/custom_bottom_navigation_bar_details.dart';
 import 'package:emaar/features/estate/presentation/views/estate_details/widgets/estate_information_section.dart';
-import 'package:emaar/features/estate/presentation/views/estate_details/widgets/main_image_section_details.dart';
-import 'package:emaar/features/estate/presentation/views/estate_details/widgets/sub_images_section_details.dart';
+import 'package:emaar/features/estate/presentation/views/estate_details/widgets/main_and_sub_images_section_details.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/entities/property_entity.dart';
-import '../../cubits/navigate_between_images_details_cubit/navigate_between_images_details_cubit.dart';
 
 class EstateDetailsView extends StatefulWidget {
   final PropertyEntity property;
@@ -26,8 +23,10 @@ class EstateDetailsViewState extends State<EstateDetailsView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Main Image and Sub Images Section
             MainAndSubImagesSectionDetails(
               estateImages: mainImageAndSubImages(),
+              tagHero: "${widget.property.id} isFeatured",
             ),
             SizedBox(height: 20),
 
@@ -48,24 +47,4 @@ class EstateDetailsViewState extends State<EstateDetailsView> {
     widget.property.image,
     ...widget.property.images,
   ];
-}
-
-class MainAndSubImagesSectionDetails extends StatelessWidget {
-  final List<String> estateImages;
-  const MainAndSubImagesSectionDetails({super.key, required this.estateImages});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NavigateBetweenImagesDetailsCubit(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          MainImageSectionDetails(estateImages: estateImages),
-          SizedBox(height: 16),
-          SubImagesSectionDetails(estateImages: estateImages),
-        ],
-      ),
-    );
-  }
 }

@@ -13,13 +13,13 @@ class CustomSliverAppBarHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      expandedHeight: 120,
+      expandedHeight: 80,
       floating: false,
-      pinned: false,
+      // pinned: true,
       stretch: true,
       elevation: 0,
-      backgroundColor: Colors.black12,
-      // backgroundColor: Colors.transparent,
+      // backgroundColor: Colors.black12,
+      backgroundColor: Colors.transparent,
       systemOverlayStyle: SystemUiOverlayStyle.light,
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
