@@ -6,10 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/utils/app_colors.dart';
 
-class MainImageDetails extends StatelessWidget {
-  const MainImageDetails({super.key, required this.houseImages});
+class MainImageSectionDetails extends StatelessWidget {
+  const MainImageSectionDetails({super.key, required this.estateImages});
 
-  final List<String> houseImages;
+  final List<String> estateImages;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class MainImageDetails extends StatelessWidget {
         ),
         child: CachedNetworkImage(
           imageUrl:
-              houseImages[context
+              estateImages[context
                   .read<NavigateBetweenImagesDetailsCubit>()
                   .state], // استخدام الحالة من الكيوبت وتحديث تلقائي
           imageBuilder:
@@ -64,24 +64,6 @@ class MainImageDetails extends StatelessWidget {
                 ),
               ),
         ),
-        // Image.network(
-        //   houseImages[context
-        //       .watch<NavigateBetweenImagesDetailsCubit>()
-        //       .state], // استخدام الحالة من الكيوبت وتحديث تلقائي
-        //   fit: BoxFit.cover,
-        //   loadingBuilder: (context, child, loadingProgress) {
-        //     if (loadingProgress == null) return child;
-        //     return Center(
-        //       child: CircularProgressIndicator(
-        //         value:
-        //             loadingProgress.expectedTotalBytes != null
-        //                 ? loadingProgress.cumulativeBytesLoaded /
-        //                     loadingProgress.expectedTotalBytes!
-        //                 : null,
-        //       ),
-        //     );
-        //   },
-        // ),
       ),
     );
   }

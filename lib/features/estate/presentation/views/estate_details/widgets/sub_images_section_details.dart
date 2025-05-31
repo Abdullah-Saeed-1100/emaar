@@ -6,10 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/utils/app_images.dart';
 
-class SubImagesDetails extends StatelessWidget {
-  const SubImagesDetails({super.key, required this.subImages});
+class SubImagesSectionDetails extends StatelessWidget {
+  const SubImagesSectionDetails({super.key, required this.estateImages});
 
-  final List<String> subImages;
+  final List<String> estateImages;
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,11 @@ class SubImagesDetails extends StatelessWidget {
       ),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: subImages.length,
+        itemCount: estateImages.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(
-              left: index + 1 == subImages.length ? 0 : 6,
+              left: index + 1 == estateImages.length ? 0 : 6,
             ),
             child: GestureDetector(
               onTap: () {
@@ -59,7 +59,7 @@ class SubImagesDetails extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: CachedNetworkImage(
-                    imageUrl: subImages[index],
+                    imageUrl: estateImages[index],
                     imageBuilder:
                         (context, imageProvider) => DecoratedBox(
                           decoration: BoxDecoration(
