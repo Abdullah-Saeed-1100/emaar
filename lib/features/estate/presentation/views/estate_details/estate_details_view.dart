@@ -5,7 +5,7 @@ import 'package:emaar/features/estate/presentation/views/estate_details/widgets/
 import 'package:flutter/material.dart';
 import '../../../../../core/entities/property_entity.dart';
 
-class EstateDetailsView extends StatefulWidget {
+class EstateDetailsView extends StatelessWidget {
   final PropertyEntity property;
   final bool fromFeaturedSection;
   const EstateDetailsView({
@@ -14,11 +14,6 @@ class EstateDetailsView extends StatefulWidget {
     required this.fromFeaturedSection,
   });
 
-  @override
-  EstateDetailsViewState createState() => EstateDetailsViewState();
-}
-
-class EstateDetailsViewState extends State<EstateDetailsView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,12 +28,12 @@ class EstateDetailsViewState extends State<EstateDetailsView> {
               estateImages: mainImageAndSubImages(),
               tagHero:
                   // إذا كانت من قسم المميز أو لا
-                  "${widget.property.id}-${widget.fromFeaturedSection}", // ex: "1-true" or "1-false"
+                  "${property.id}-$fromFeaturedSection", // ex: "1-true" or "1-false"
             ),
             SizedBox(height: 20),
 
             // estate Information Section
-            EstateInformationSection(),
+            EstateInformationSection(property: property),
 
             SizedBox(height: 20),
           ],
@@ -50,8 +45,5 @@ class EstateDetailsViewState extends State<EstateDetailsView> {
   }
 
   // هذه الدالة تعيد قائمة الصورة الرئيسية والصور الفرعية
-  List<String> mainImageAndSubImages() => [
-    widget.property.image,
-    ...widget.property.images,
-  ];
+  List<String> mainImageAndSubImages() => [property.image, ...property.images];
 }

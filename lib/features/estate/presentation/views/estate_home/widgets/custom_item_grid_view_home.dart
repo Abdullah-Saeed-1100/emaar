@@ -6,6 +6,7 @@ import 'package:emaar/core/utils/app_text_styles.dart';
 import 'package:emaar/features/estate/presentation/views/estate_home/widgets/property_detail_for_item_grid_view_home.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../../core/functions/add_commas_to_price.dart';
 import '../../estate_details/estate_details_view.dart';
 
 class CustomItemGridViewHome extends StatelessWidget {
@@ -207,7 +208,7 @@ class CustomItemGridViewHome extends StatelessWidget {
                   SizedBox(height: 12),
                   // السعر
                   Text(
-                    '${property.price.toInt()} ريال',
+                    '${addCommasToPrice(property.price.toInt())} ريال',
                     style: AppTextStyles.heading20.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppColors.primary,

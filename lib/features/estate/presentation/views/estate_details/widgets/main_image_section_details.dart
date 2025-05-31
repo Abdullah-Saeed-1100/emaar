@@ -24,6 +24,7 @@ class MainImageSectionDetails extends StatelessWidget {
         >(); // لمراقبة الحالة وتحديث الواجهة تلقائيًا
     return AspectRatio(
       aspectRatio: 1,
+      // aspectRatio: 4 / 3, // نسبة العرض إلى الارتفاع للصورة الرئيسية
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [

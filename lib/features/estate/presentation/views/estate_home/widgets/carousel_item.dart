@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../core/entities/property_entity.dart';
+import '../../../../../../core/functions/add_commas_to_price.dart';
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../estate_details/estate_details_view.dart';
@@ -130,7 +131,7 @@ class CarouselItem extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    property.price.toInt().toString(),
+                    '${addCommasToPrice(property.price.toInt())} ريال',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,

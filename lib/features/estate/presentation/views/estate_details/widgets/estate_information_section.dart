@@ -3,8 +3,12 @@ import 'package:emaar/core/utils/app_images.dart';
 import 'package:emaar/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../../core/entities/property_entity.dart';
+import '../../../../../../core/functions/add_commas_to_price.dart';
+
 class EstateInformationSection extends StatelessWidget {
-  const EstateInformationSection({super.key});
+  final PropertyEntity property;
+  const EstateInformationSection({super.key, required this.property});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,7 @@ class EstateInformationSection extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'فيلا فاخرة مع حديقة واسعة',
+                  property.title,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -40,7 +44,7 @@ class EstateInformationSection extends StatelessWidget {
                 ),
               ),
               Text(
-                '2,500,000 ريال',
+                '${addCommasToPrice(property.price.toInt())} ريال',
                 style: AppTextStyles.heading20.copyWith(
                   color: AppColors.primary,
                 ),
@@ -56,7 +60,7 @@ class EstateInformationSection extends StatelessWidget {
               Icon(Icons.location_on, color: Colors.red, size: 20),
               SizedBox(width: 4),
               Text(
-                'الرياض، حي النرجس',
+                "${property.city}, ${property.address}",
                 style: TextStyle(fontSize: 14, color: Colors.grey[600]),
               ),
               Spacer(),
@@ -75,9 +79,21 @@ class EstateInformationSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildFeatureItem(Icons.bed, '5', 'غرف نوم'),
-              _buildFeatureItem(Icons.bathtub, '4', 'حمامات'),
-              _buildFeatureItem(Icons.square_foot, '450', 'متر مربع'),
+              _buildFeatureItem(
+                Icons.bed,
+                property.bedrooms.toString(),
+                'غرف نوم',
+              ),
+              _buildFeatureItem(
+                Icons.bathtub,
+                property.bathrooms.toString(),
+                'حمامات',
+              ),
+              _buildFeatureItem(
+                Icons.square_foot,
+                property.area.toString(),
+                'متر مربع',
+              ),
             ],
           ),
 
@@ -94,7 +110,7 @@ class EstateInformationSection extends StatelessWidget {
           ),
           SizedBox(height: 8),
           Text(
-            'فيلا فاخرة تتميز بتصميم عصري وإطلالة رائعة، تحتوي على 5 غرف نوم رئيسية مع حمامات مستقلة، صالة واسعة، مطبخ مجهز بالكامل، حديقة واسعة مع مسبح خاص. الفيلا مصممة بأحدث المعايير العالمية وتقع في موقع متميز قريب من جميع الخدمات.',
+            property.description,
             textAlign: TextAlign.justify,
             style: TextStyle(
               fontSize: 14,
@@ -126,7 +142,7 @@ class EstateInformationSection extends StatelessWidget {
           ),
           SizedBox(height: 20),
 
-          // Agent Information
+          // معلومات الوكيل
           Container(
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -194,15 +210,24 @@ class EstateInformationSection extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: AppColors.primary10,
+        // color: AppColors.primary10,
+        color: Colors.grey[50],
+        // color: Colors.white,
+        // color: Colors.blue[50],
         borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: AppColors.primary, // أو أي لون تفضله
+          width: .5,
+        ),
       ),
       child: Text(
         label,
         style: TextStyle(
           fontSize: 12.5,
-          color: AppColors.primary,
-          fontWeight: FontWeight.bold,
+          color: Colors.black87,
+          // color: AppColors.primary,
+          // color: Colors.blue[700],
+          fontWeight: FontWeight.normal,
         ),
       ),
     );
