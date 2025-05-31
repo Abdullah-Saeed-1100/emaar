@@ -11,9 +11,12 @@ final class HomeLoadingState extends HomeState {}
 
 final class HomeSuccessState extends HomeState {
   final List<PropertyEntity> properties;
-  final List<PropertyEntity> propertiesFetured;
+  final List<PropertyEntity> propertiesFeatured;
 
-  HomeSuccessState({required this.properties, required this.propertiesFetured});
+  HomeSuccessState({
+    required this.properties,
+    required this.propertiesFeatured,
+  });
 }
 
 final class HomeErrorState extends HomeState {

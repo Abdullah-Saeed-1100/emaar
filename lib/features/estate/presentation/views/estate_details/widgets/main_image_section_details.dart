@@ -85,11 +85,15 @@ class MainImageSectionDetails extends StatelessWidget {
 
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.black26, // شفاف جزئياً
+                color: Colors.black12, // شفاف جزئياً
                 shape: BoxShape.circle,
               ),
               padding: const EdgeInsets.all(12.0),
-              child: Icon(Icons.arrow_back, color: Colors.white, size: 24),
+              child: Icon(
+                Icons.arrow_back_rounded,
+                color: Colors.white,
+                size: 24,
+              ),
             ),
           ),
         ),

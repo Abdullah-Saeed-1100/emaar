@@ -12,13 +12,14 @@ class EstateHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create:
-          (context) =>
-              HomeCubit(estateRepo: getIt.get<EstateRepo>())..fetchProperties(),
-      child: Scaffold(
-        backgroundColor: AppColors.primaryBackground,
-        body: EstateHomeViewBody(),
+    return Scaffold(
+      backgroundColor: AppColors.primaryBackground,
+      body: BlocProvider(
+        create:
+            (_) =>
+                HomeCubit(estateRepo: getIt.get<EstateRepo>())
+                  ..fetchProperties(),
+        child: EstateHomeViewBody(),
       ),
     );
   }

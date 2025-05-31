@@ -59,7 +59,7 @@ class _CustomCarouselViewSliverHomeState
           }
           if (state is HomeSuccessState) {
             return CustomCarouselViewSliverHomeWhenSuccess(
-              propertiesFetured: state.propertiesFetured,
+              propertiesFetured: state.propertiesFeatured,
             );
           }
           return Center(child: Text('لا توجد بيانات لعرضها'));

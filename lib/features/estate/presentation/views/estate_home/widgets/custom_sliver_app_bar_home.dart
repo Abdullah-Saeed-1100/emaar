@@ -61,18 +61,24 @@ class CustomSliverAppBarHome extends StatelessWidget {
                             Text('إعمار', style: AppTextStyles.heading26),
                           ],
                         ),
-
+                        // logo icon
                         Container(
                           padding: EdgeInsets.all(8),
+                          height: 60,
+                          width: 60,
                           decoration: BoxDecoration(
-                            color: Colors.white30,
+                            color: Colors.black26,
                             borderRadius: BorderRadius.circular(12),
+                            image: DecorationImage(
+                              image: AssetImage(AppImages.logo),
+                              fit: BoxFit.contain,
+                            ),
                           ),
-                          child: Icon(
-                            Icons.notifications_outlined,
-                            color: Colors.white,
-                            size: 24,
-                          ),
+                          // child: Icon(
+                          //   Icons.notifications_outlined,
+                          //   color: Colors.white,
+                          //   size: 24,
+                          // ),
                         ),
                       ],
                     ),
